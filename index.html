@@ -563,12 +563,16 @@
         <span>Projetos</span>
       </div>
 
+      <div class="desktop-icon" onclick="openWindow('win-solitaire')">
+        <img src="./icons/carta.png" onerror="this.onerror=null; this.src='carta.png';" alt="Solitaire" style="width: 52px; height: 52px; object-fit: cover; image-rendering: pixelated;">
+        <span>Solitaire</span>
+      </div>
+
       <div class="desktop-icon" onclick="openWindow('win-contato')">
         <img src="./icons/contato.png" onerror="this.onerror=null; this.src='contato.png';" alt="Contato">
         <span>Contato</span>
       </div>
     </div>
-
   </main>
 
   <!-- ================= JANELAS RETRO (MODAIS) ================= -->
@@ -821,6 +825,18 @@
           <span class="badge-tag">Pixel Art & Vibe Coding</span>
         </div>
       </div>
+    </div>
+    <div class="window-resizer"></div>
+  </div>
+
+<!-- Solitaire Iframe -->
+  <div class="retro-window" id="win-solitaire" style="width: min(680px, 95vw); height: 500px;">
+    <div class="window-header">
+      <span>SOLITAIRE.EXE</span>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-solitaire')">×</button></div>
+    </div>
+    <div class="window-body" style="padding: 0; background: #007f3d; display: flex; flex-direction: column; height: calc(100% - 32px);">
+      <iframe src="https://aashishchakravarty.github.io/solitaire/" style="width: 100%; height: 100%; border: none; background: #007f3d;" title="Solitaire Game"></iframe>
     </div>
     <div class="window-resizer"></div>
   </div>
