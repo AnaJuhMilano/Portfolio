@@ -1110,40 +1110,67 @@
       }
     }
 
-    // Janelas Arrastáveis (Draggable)
+    // Janelas Arrastáveis (Suporte a Rato e Toque para Telemóvel)
     document.querySelectorAll('.retro-window').forEach(win => {
       const header = win.querySelector('.window-header');
       let isDragging = false;
       let startX, startY, initialLeft, initialTop;
 
-      win.addEventListener('mousedown', () => {
-        win.style.zIndex = ++topZ;
-      });
+      win.addEventListener('mousedown', () => { win.style.zIndex = ++topZ; });
+      win.addEventListener('touchstart', () => { win.style.zIndex = ++topZ; }, { passive: true });
 
-      header.addEventListener('mousedown', (e) => {
-        if (e.target.classList.contains('win-btn')) return;
+      function startDrag(clientX, clientY) {
         isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
+        startX = clientX;
+        startY = clientY;
         const rect = win.getBoundingClientRect();
         initialLeft = rect.left;
         initialTop = rect.top;
+      }
 
-        function onMouseMove(e) {
-          if (!isDragging) return;
-          win.style.left = `${initialLeft + (e.clientX - startX)}px`;
-          win.style.top = `${initialTop + (e.clientY - startY)}px`;
-        }
+      function onMove(clientX, clientY) {
+        if (!isDragging) return;
+        win.style.left = `${initialLeft + (clientX - startX)}px`;
+        win.style.top = `${initialTop + (clientY - startY)}px`;
+      }
 
+      function endDrag() {
+        isDragging = false;
+      }
+
+      // Eventos de Rato (PC)
+      header.addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('win-btn')) return;
+        startDrag(e.clientX, e.clientY);
+
+        function onMouseMove(e) { onMove(e.clientX, e.clientY); }
         function onMouseUp() {
-          isDragging = false;
+          endDrag();
           window.removeEventListener('mousemove', onMouseMove);
           window.removeEventListener('mouseup', onMouseUp);
         }
-
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('mouseup', onMouseUp);
       });
+
+      // Eventos de Toque (Telemóvel / Touch)
+      header.addEventListener('touchstart', (e) => {
+        if (e.target.classList.contains('win-btn')) return;
+        const touch = e.touches[0];
+        startDrag(touch.clientX, touch.clientY);
+
+        function onTouchMove(e) {
+          const t = e.touches[0];
+          onMove(t.clientX, t.clientY);
+        }
+        function onTouchEnd() {
+          endDrag();
+          window.removeEventListener('touchmove', onTouchMove);
+          window.removeEventListener('touchend', onTouchEnd);
+        }
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        window.addEventListener('touchend', onTouchEnd);
+      }, { passive: true });
     });
 
     // Janelas Redimensionáveis (Resizable via alça inferior direita)
