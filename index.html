@@ -1110,7 +1110,7 @@
       }
     }
 
-    // Janelas Arrastáveis (Suporte a Rato e Toque para Telemóvel)
+   // 1. Janelas Arrastáveis (Suporte completo a Rato e Toque)
     document.querySelectorAll('.retro-window').forEach(win => {
       const header = win.querySelector('.window-header');
       let isDragging = false;
@@ -1153,11 +1153,12 @@
         window.addEventListener('mouseup', onMouseUp);
       });
 
-      // Eventos de Toque (Telemóvel / Touch)
+      // Eventos de Toque (Telemóvel / Tablet)
       header.addEventListener('touchstart', (e) => {
         if (e.target.classList.contains('win-btn')) return;
         const touch = e.touches[0];
         startDrag(touch.clientX, touch.clientY);
+        if (e.cancelable) e.preventDefault(); // Impede o scroll da página ao tentar arrastar no telemóvel
 
         function onTouchMove(e) {
           const t = e.touches[0];
@@ -1168,43 +1169,73 @@
           window.removeEventListener('touchmove', onTouchMove);
           window.removeEventListener('touchend', onTouchEnd);
         }
-        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        window.addEventListener('touchmove', onTouchMove, { passive: false });
         window.addEventListener('touchend', onTouchEnd);
-      }, { passive: true });
+      }, { passive: false });
     });
 
-    // Janelas Redimensionáveis (Resizable via alça inferior direita)
+    // 2. Janelas Redimensionáveis (Suporte completo a Rato e Toque no cantinho)
     document.querySelectorAll('.window-resizer').forEach(resizer => {
       const win = resizer.closest('.retro-window');
       let isResizing = false;
       let startX, startY, startWidth, startHeight;
 
-      resizer.addEventListener('mousedown', (e) => {
+      function startResize(clientX, clientY) {
         isResizing = true;
-        startX = e.clientX;
-        startY = e.clientY;
+        startX = clientX;
+        startY = clientY;
         startWidth = win.offsetWidth;
         startHeight = win.offsetHeight;
+      }
+
+      function onResizeMove(clientX, clientY) {
+        if (!isResizing) return;
+        const newWidth = Math.max(280, startWidth + (clientX - startX));
+        const newHeight = Math.max(200, startHeight + (clientY - startY));
+        win.style.width = `${newWidth}px`;
+        win.style.height = `${newHeight}px`;
+      }
+
+      function endResize() {
+        isResizing = false;
+      }
+
+      // Rato (PC)
+      resizer.addEventListener('mousedown', (e) => {
+        startResize(e.clientX, e.clientY);
         e.stopPropagation();
 
-        function onMouseMove(e) {
-          if (!isResizing) return;
-          const newWidth = Math.max(320, startWidth + (e.clientX - startX));
-          const newHeight = Math.max(240, startHeight + (e.clientY - startY));
-          win.style.width = `${newWidth}px`;
-          win.style.height = `${newHeight}px`;
-        }
-
+        function onMouseMove(e) { onResizeMove(e.clientX, e.clientY); }
         function onMouseUp() {
-          isResizing = false;
+          endResize();
           window.removeEventListener('mousemove', onMouseMove);
           window.removeEventListener('mouseup', onMouseUp);
         }
-
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('mouseup', onMouseUp);
       });
+
+      // Toque (Telemóvel / Tablet no cantinho)
+      resizer.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        startResize(touch.clientX, touch.clientY);
+        e.stopPropagation();
+        if (e.cancelable) e.preventDefault();
+
+        function onTouchMove(e) {
+          const t = e.touches[0];
+          onResizeMove(t.clientX, t.clientY);
+        }
+        function onTouchEnd() {
+          endResize();
+          window.removeEventListener('touchmove', onTouchMove);
+          window.removeEventListener('touchend', onTouchEnd);
+        }
+        window.addEventListener('touchmove', onTouchMove, { passive: false });
+        window.addEventListener('touchend', onTouchEnd);
+      }, { passive: false });
     });
+    
   </script>
 </body>
 </html>
