@@ -687,8 +687,8 @@
     </div>
   </div>
 
-  <!-- 6. Projetos com Cases (Leo Godoy & Portfolio OS) -->
-  <div class="retro-window" id="win-projetos" style="width: min(600px, 95vw);">
+  <!-- 6. Projetos com Abas de Cases -->
+  <div class="retro-window" id="win-projetos" style="width: min(620px, 95vw);">
     <div class="window-header">
       <span>PROJETOS.DIR // CASES_STUDY.EXE</span>
       <div class="window-controls">
@@ -697,11 +697,14 @@
     </div>
     
     <!-- Barra de Abas Retro -->
-    <div style="display: flex; gap: 4px; background: #ffe3f1; padding: 6px 12px 0 12px; border-bottom: 2px solid #ff9ac9;">
-      <button id="tab-btn-1" onclick="switchCaseTab('case-leogodoy')" style="background: #ffffff; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 12px; font-family: var(--font-pixel); font-size: 7px; color: #9e2864; cursor: pointer;">
+    <div style="display: flex; gap: 4px; background: #ffe3f1; padding: 6px 12px 0 12px; border-bottom: 2px solid #ff9ac9; overflow-x: auto;">
+      <button id="tab-btn-1" onclick="switchCaseTab('case-leogodoy')" style="background: #ffffff; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 10px; font-family: var(--font-pixel); font-size: 7px; color: #9e2864; cursor: pointer; white-space: nowrap;">
         🥊 Leo Godoy
       </button>
-      <button id="tab-btn-2" onclick="switchCaseTab('case-portfolio')" style="background: #ffd6eb; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 12px; font-family: var(--font-pixel); font-size: 7px; color: #72407d; cursor: pointer;">
+      <button id="tab-btn-2" onclick="switchCaseTab('case-kombikitchen')" style="background: #ffd6eb; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 10px; font-family: var(--font-pixel); font-size: 7px; color: #72407d; cursor: pointer; white-space: nowrap;">
+        🚐 Kombi Kitchen
+      </button>
+      <button id="tab-btn-3" onclick="switchCaseTab('case-portfolio')" style="background: #ffd6eb; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 10px; font-family: var(--font-pixel); font-size: 7px; color: #72407d; cursor: pointer; white-space: nowrap;">
         ✨ Portfolio OS
       </button>
     </div>
@@ -711,14 +714,13 @@
       <div id="case-leogodoy">
         <h2>🥊 Leo Godoy — Muay Thai & Personal</h2>
 
-        <!-- Galeria do Mockup e Logo -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
           <div style="background: #111; border-radius: 6px; padding: 6px; text-align: center; border: 1.5px solid #ff9ac9;">
-            <img src="./luvas.png" onerror="this.onerror=null; this.src='luvas.png';" alt="Mockup Luvas Leo Godoy" style="width: 100%; height: 160px; object-fit: contain; border-radius: 4px;">
+            <img src="./Leo/luvas.png" onerror="this.onerror=null; this.src='luvas.png';" alt="Mockup Luvas Leo Godoy" style="width: 100%; height: 150px; object-fit: contain; border-radius: 4px;">
             <span style="font-size: 10px; font-weight: 800; color: #ffb1d9; margin-top: 4px; display: block;">Aplicação em Luvas</span>
           </div>
           <div style="background: #ffffff; border-radius: 6px; padding: 6px; text-align: center; border: 1.5px solid #ff9ac9;">
-            <img src="./Logotipo.png" onerror="this.onerror=null; this.src='Logotipo.png';" alt="Logotipo Leo Godoy" style="width: 100%; height: 160px; object-fit: contain; border-radius: 4px;">
+            <img src="./Leo/Logotipo.png" onerror="this.onerror=null; this.src='Logotipo.png';" alt="Logotipo Leo Godoy" style="width: 100%; height: 150px; object-fit: contain; border-radius: 4px;">
             <span style="font-size: 10px; font-weight: 800; color: #9e2864; margin-top: 4px; display: block;">Símbolo Monograma (L+G)</span>
           </div>
         </div>
@@ -726,53 +728,76 @@
         <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
           <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 O Desafio & Posicionamento:</p>
           <p style="font-size: 13px; color: #432247;">
-            Desenvolver uma identidade visual consolidada para um treinador de Muay Thai e personal trainer local. O objetivo central foi criar um ativo gráfico marcante capaz de transmitir disciplina marcial, elevar o profissionalismo no mercado fitness regional e garantir reconhecimento visual imediato da equipe e academia pela cidade.
+            Desenvolver uma identidade visual consolidada para um treinador de Muay Thai e personal trainer local, garantindo reconhecimento visual imediato no mercado fitness regional.
           </p>
         </div>
 
         <h3>💡 Conceito do Símbolo</h3>
         <p style="font-size: 13px; color: #432247; margin-bottom: 12px;">
-          As iniciais <b>"L"</b> e <b>"G"</b> foram integradas em uma estrutura ortogonal chanfrada que forma a silhueta de um <b>punho cerrado / luva de combate</b>. A forma comunica solidez e precisão técnica, com excelente legibilidade tanto em bordados de equipamentos quanto em fachadas comerciais.
+          As iniciais <b>"L"</b> e <b>"G"</b> fundidas em uma estrutura ortogonal chanfrada que evoca um punho cerrado e uma luva de combate.
         </p>
 
         <h3>🎨 Paleta & Tipografia</h3>
         <div class="tag-container" style="margin-bottom: 14px;">
-          <span class="badge-tag" style="background: #3b0a1a; color: #fff; border-color: #7a1538;">Bordô Marcial</span>
-          <span class="badge-tag" style="background: #0f2b1d; color: #fff; border-color: #1e5238;">Verde Floresta</span>
+          <span class="badge-tag">Bordô Marcial</span>
+          <span class="badge-tag">Verde Floresta</span>
           <span class="badge-tag">Athletic Slab Typography</span>
-          <span class="badge-tag">Branding Esportivo</span>
         </div>
-
-        <h3>🏆 Resultados</h3>
-        <ul style="padding-left: 18px; font-size: 13px; line-height: 1.7; color: #522757;">
-          <li><b>Fixação de Marca:</b> Reconhecimento facilitado em uniformes, banners e pontos estratégicos do município.</li>
-          <li><b>Versatilidade Técnica:</b> Aplicação limpa em estamparia têxtil, couro sintético e mídias sociais.</li>
-          <li><b>Autoridade Regional:</b> Diferenciação frente à concorrência por meio de uma identidade visual madura e proprietária.</li>
-        </ul>
       </div>
 
-      <!-- ================= CASE 02: PORTFOLIO OS ================= -->
+      <!-- ================= CASE 02: KOMBI KITCHEN ================= -->
+      <div id="case-kombikitchen" style="display: none;">
+        <h2>🚐 Kombi Kitchen — Oficina Móvel de Cozinha</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+          <div style="background: #ffffff; border-radius: 6px; padding: 6px; text-align: center; border: 1.5px solid #ff9ac9;">
+            <img src="./Kombi/mockup.png" onerror="this.onerror=null; this.src='mockup.png';" alt="Mockup Kombi Kitchen" style="width: 100%; height: 150px; object-fit: contain; border-radius: 4px;">
+            <span style="font-size: 10px; font-weight: 800; color: #9e2864; margin-top: 4px; display: block;">Mockup Aplicação</span>
+          </div>
+          <div style="background: #ffffff; border-radius: 6px; padding: 6px; text-align: center; border: 1.5px solid #ff9ac9;">
+            <img src="./Kombi/kombi.png" onerror="this.onerror=null; this.src='kombi.png';" alt="Logotipo Kombi Kitchen" style="width: 100%; height: 150px; object-fit: contain; border-radius: 4px;">
+            <span style="font-size: 10px; font-weight: 800; color: #9e2864; margin-top: 4px; display: block;">Logotipo Lettering</span>
+          </div>
+        </div>
+
+        <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
+          <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 Descrição do Negócio & Conceito[cite: 2, 3]:</p>
+          <p style="font-size: 13px; color: #432247;">
+            Oficina móvel especializada na manutenção de utensílios e equipamentos de cozinha operando diretamente a partir de um veículo adaptado[cite: 2]. O projeto resgata a tradição da assistência de proximidade sob uma ótica moderna, unindo o apelo afetivo da Kombi clássica com o rigor de uma oficina profissional[cite: 3].
+          </p>
+        </div>
+
+        <h3>🎨 Identidade Visual & Tipografia[cite: 4, 5, 6]</h3>
+        <p style="font-size: 13px; color: #432247; margin-bottom: 10px;">
+          Lettering expressivo de forte inspiração retrô setentista, acompanhado por uma paleta vibrante com <b>Coral Vintage (#E87277)</b> e <b>Roxo Profundo (#2D0978)</b>, complementada pelas fontes Chunky Retro e Poor Richard[cite: 4, 5, 6].
+        </p>
+
+        <div class="tag-container" style="margin-bottom: 14px;">
+          <span class="badge-tag" style="background: #E87277; color: #fff; border-color: #c4585c;">Coral Vintage</span>
+          <span class="badge-tag" style="background: #2D0978; color: #fff; border-color: #1a0445;">Roxo Profundo</span>
+          <span class="badge-tag">Branding Móvel</span>
+          <span class="badge-tag">Manual de Identidade Visual</span>
+        </div>
+      </div>
+
+      <!-- ================= CASE 03: PORTFOLIO OS ================= -->
       <div id="case-portfolio" style="display: none;">
         <h2>✨ Case: Portfolio OS — Retro Digital Experience</h2>
         
         <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
           <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 O Desafio:</p>
           <p style="font-size: 13px; color: #432247;">
-            Superar apresentações lineares em PDF desenvolvendo uma plataforma proprietária interativa que servisse simultaneamente como portfólio e prova prática de domínio técnico em UI/UX, animações CSS e front-end criativo.
+            Superar portfólios estáticos em PDF criando uma plataforma proprietária interativa que evidencia competência em UI/UX, arquitetura de informação e front-end criativo.
           </p>
         </div>
 
-        <h3>🛠️ Competências & Tecnologias</h3>
+        <h3>🛠️ Tecnologias & UX</h3>
         <div class="tag-container" style="margin-bottom: 14px;">
           <span class="badge-tag">UI / UX Architecture</span>
           <span class="badge-tag">HTML5 & CSS3 Keyframes</span>
           <span class="badge-tag">JavaScript DOM API</span>
           <span class="badge-tag">Pixel Art & Vibe Coding</span>
         </div>
-
-        <p style="font-size: 13px; color: #522757;">
-          Ambiente desktop funcional com janelas arrastáveis, berloques tridimensionais animados e navegação exploratória nostálgica inspirada no início dos anos 2000.
-        </p>
       </div>
     </div>
   </div>
@@ -829,12 +854,14 @@
           </linearGradient>
         </defs>
 
+        <!-- Sombra inferior do botão -->
         <path d="
           M 20 60 H 140 V 62 H 20 Z
           M 14 58 H 146 V 60 H 14 Z
           M 10 56 H 150 V 58 H 10 Z
         " fill="#c98ecf" opacity="0.45" />
 
+        <!-- Corpo arredondado do botão -->
         <path d="
           M 16 0 H 144 V 4 H 16 Z
           M 10 4 H 150 V 8 H 10 Z
@@ -847,20 +874,32 @@
           M 16 56 H 144 V 60 H 16 Z
         " fill="url(#pixelBg)" />
 
+        <!-- Sombra Rosa do Texto (deslocada) -->
         <g fill="#ff6bbd">
-          <path d="M 43 20 H 59 V 24 H 43 Z M 39 24 H 47 V 34 H 39 Z M 43 32 H 59 V 36 H 43 Z M 51 36 H 59 V 46 H 51 Z M 39 44 H 55 V 48 H 39 Z" />
-          <path d="M 60 20 H 76 V 24 H 60 Z M 66 24 H 70 V 48 H 66 Z" />
-          <path d="M 80 20 H 90 V 24 H 80 Z M 76 24 H 82 V 48 H 76 Z M 88 24 H 94 V 48 H 88 Z M 80 34 H 90 V 38 H 80 Z" />
-          <path d="M 97 20 H 111 V 24 H 97 Z M 97 24 H 103 V 48 H 97 Z M 107 24 H 113 V 34 H 107 Z M 101 32 H 109 V 36 H 101 Z M 105 36 H 111 V 42 H 105 Z M 109 42 H 115 V 48 H 109 Z" />
-          <path d="M 118 20 H 134 V 24 H 118 Z M 124 24 H 128 V 48 H 124 Z" />
+          <!-- S -->
+          <path d="M 29 20 H 45 V 24 H 29 Z M 25 24 H 33 V 34 H 25 Z M 29 32 H 45 V 36 H 29 Z M 37 36 H 45 V 46 H 37 Z M 25 44 H 41 V 48 H 25 Z" />
+          <!-- T -->
+          <path d="M 48 20 H 64 V 24 H 48 Z M 54 24 H 58 V 48 H 54 Z" />
+          <!-- A (Corrigido) -->
+          <path d="M 70 20 H 80 V 24 H 70 Z M 66 24 H 72 V 48 H 66 Z M 78 24 H 84 V 48 H 78 Z M 70 32 H 80 V 36 H 70 Z" />
+          <!-- R (Corrigido) -->
+          <path d="M 87 20 H 101 V 24 H 87 Z M 87 24 H 93 V 48 H 87 Z M 97 24 H 103 V 34 H 97 Z M 91 32 H 99 V 36 H 91 Z M 95 36 H 101 V 42 H 95 Z M 99 42 H 105 V 48 H 99 Z" />
+          <!-- T -->
+          <path d="M 108 20 H 124 V 24 H 108 Z M 114 24 H 118 V 48 H 114 Z" />
         </g>
 
+        <!-- Texto Frontal Preto/Grafite -->
         <g fill="#2b2b2b">
-          <path d="M 41 18 H 57 V 22 H 41 Z M 37 22 H 45 V 32 H 37 Z M 41 30 H 57 V 34 H 41 Z M 49 34 H 57 V 44 H 49 Z M 37 42 H 53 V 46 H 37 Z" />
-          <path d="M 58 18 H 74 V 22 H 58 Z M 64 22 H 68 V 46 H 64 Z" />
-          <path d="M 78 18 H 88 V 22 H 78 Z M 74 22 H 80 V 46 H 64 Z M 76 22 H 82 V 46 H 76 Z M 68 32 H 78 V 36 H 68 Z" />
-          <path d="M 87 18 H 101 V 22 H 87 Z M 87 22 H 93 V 46 H 87 Z M 97 22 H 103 V 32 H 97 Z M 91 30 H 99 V 34 H 91 Z M 95 34 H 101 V 40 H 95 Z M 99 40 H 105 V 46 H 99 Z" />
-          <path d="M 116 18 H 132 V 22 H 116 Z M 122 22 H 126 V 46 H 122 Z" />
+          <!-- S -->
+          <path d="M 27 18 H 43 V 22 H 27 Z M 23 22 H 31 V 32 H 23 Z M 27 30 H 43 V 34 H 27 Z M 35 34 H 43 V 44 H 35 Z M 23 42 H 39 V 46 H 23 Z" />
+          <!-- T -->
+          <path d="M 46 18 H 62 V 22 H 46 Z M 52 22 H 56 V 46 H 52 Z" />
+          <!-- A (Corrigido) -->
+          <path d="M 68 18 H 78 V 22 H 68 Z M 64 22 H 70 V 46 H 64 Z M 76 22 H 82 V 46 H 76 Z M 68 30 H 78 V 34 H 68 Z" />
+          <!-- R (Corrigido) -->
+          <path d="M 85 18 H 99 V 22 H 85 Z M 85 22 H 91 V 46 H 85 Z M 95 22 H 101 V 32 H 95 Z M 89 30 H 97 V 34 H 89 Z M 93 34 H 99 V 40 H 93 Z M 97 40 H 103 V 46 H 97 Z" />
+          <!-- T -->
+          <path d="M 106 18 H 122 V 22 H 106 Z M 112 22 H 116 V 46 H 112 Z" />
         </g>
       </svg>
     </button>
@@ -898,24 +937,33 @@
     // Alternar Abas de Cases na janela de Projetos
     function switchCaseTab(caseId) {
       const caseLeo = document.getElementById('case-leogodoy');
+      const caseKombi = document.getElementById('case-kombikitchen');
       const casePort = document.getElementById('case-portfolio');
       const btn1 = document.getElementById('tab-btn-1');
       const btn2 = document.getElementById('tab-btn-2');
+      const btn3 = document.getElementById('tab-btn-3');
 
+      // Ocultar todos
+      caseLeo.style.display = 'none';
+      caseKombi.style.display = 'none';
+      casePort.style.display = 'none';
+      btn1.style.background = '#ffd6eb'; btn1.style.color = '#72407d';
+      btn2.style.background = '#ffd6eb'; btn2.style.color = '#72407d';
+      btn3.style.background = '#ffd6eb'; btn3.style.color = '#72407d';
+
+      // Exibir o selecionado
       if (caseId === 'case-leogodoy') {
         caseLeo.style.display = 'block';
-        casePort.style.display = 'none';
         btn1.style.background = '#ffffff';
         btn1.style.color = '#9e2864';
-        btn2.style.background = '#ffd6eb';
-        btn2.style.color = '#72407d';
-      } else {
-        caseLeo.style.display = 'none';
-        casePort.style.display = 'block';
-        btn1.style.background = '#ffd6eb';
-        btn1.style.color = '#72407d';
+      } else if (caseId === 'case-kombikitchen') {
+        caseKombi.style.display = 'block';
         btn2.style.background = '#ffffff';
         btn2.style.color = '#9e2864';
+      } else {
+        casePort.style.display = 'block';
+        btn3.style.background = '#ffffff';
+        btn3.style.color = '#9e2864';
       }
     }
 
