@@ -419,7 +419,7 @@
   </style>
 </head>
 <body>
-
+  <audio id="bg-audio" preload="auto" loop></audio>
   <!-- Área de Trabalho -->
   <main id="desktop">
 
@@ -568,6 +568,11 @@
         <span>Solitaire</span>
       </div>
 
+      <div class="desktop-icon" onclick="openWindow('win-player')">
+        <img src="./icons/music.png" onerror="this.onerror=null; this.src='music.png';" alt="Music" style="width: 52px; height: 52px; object-fit: contain; image-rendering: pixelated; display: block;">
+        <span>Music.mp3</span>
+      </div>
+      
       <div class="desktop-icon" onclick="openWindow('win-contato')">
         <img src="./icons/contato.png" onerror="this.onerror=null; this.src='contato.png';" alt="Contato">
         <span>Contato</span>
@@ -841,6 +846,28 @@
     <div class="window-resizer"></div>
   </div>
 
+ <!-- Player de Música (Winamp Local) -->
+  <div class="retro-window" id="win-player" style="width: 380px;">
+    <div class="window-header">
+      <span>WINAMP_PLAYER.EXE</span>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-player')">×</button></div>
+    </div>
+    <div class="window-body">
+      <div class="player-box">
+        <div class="player-screen" id="track-title">
+          ▶ 01. Lofi (Pixabay)
+        </div>
+        <div style="font-size: 10px; color: #00ff66; margin-bottom: 10px;" id="player-status">Status: Pausado ⏹</div>
+        <div class="player-controls">
+          <button class="player-btn" onclick="prevTrack()">ANTERIOR</button>
+          <button class="player-btn" onclick="togglePlayMusic()">PLAY / PAUSE</button>
+          <button class="player-btn" onclick="nextTrack()">PRÓXIMA</button>
+        </div>
+      </div>
+    </div>
+    <div class="window-resizer"></div>
+  </div>
+
   <!-- 7. Contato -->
   <div class="retro-window" id="win-contato">
     <div class="window-header">
@@ -938,6 +965,57 @@
   </footer>
 
   <script>
+    // Player de Música Otimizado com as 5 faixas
+    const audioPlayer = document.getElementById('bg-audio');
+    const tracks = [
+      { name: "▶ 01. Lofi Track 1", src: "./musicas/track1.mp3" },
+      { name: "▶ 02. Lofi Track 2", src: "./musicas/track2.mp3" },
+      { name: "▶ 03. Lofi Track 3", src: "./musicas/track3.mp3" },
+      { name: "▶ 04. Lofi Track 4", src: "./musicas/track4.mp3" },
+      { name: "▶ 05. Lofi Track 5", src: "./musicas/track5.mp3" }
+    ];
+    let currentTrackIdx = 0;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      audioPlayer.src = tracks[0].src;
+      audioPlayer.load();
+    });
+
+    function togglePlayMusic() {
+      if (audioPlayer.paused) {
+        audioPlayer.play().then(() => {
+          document.getElementById('player-status').textContent = "Status: Tocando ♫";
+        }).catch(err => {
+          audioPlayer.play();
+          document.getElementById('player-status').textContent = "Status: Tocando ♫";
+        });
+      } else {
+        audioPlayer.pause();
+        document.getElementById('player-status').textContent = "Status: Pausado ⏹";
+      }
+    }
+
+    function nextTrack() {
+      currentTrackIdx = (currentTrackIdx + 1) % tracks.length;
+      playCurrentTrack();
+    }
+
+    function prevTrack() {
+      currentTrackIdx = (currentTrackIdx - 1 + tracks.length) % tracks.length;
+      playCurrentTrack();
+    }
+
+    function playCurrentTrack() {
+      audioPlayer.src = tracks[currentTrackIdx].src;
+      document.getElementById('track-title').textContent = tracks[currentTrackIdx].name;
+      audioPlayer.load();
+      audioPlayer.play().then(() => {
+        document.getElementById('player-status').textContent = "Status: Tocando ♫";
+      }).catch(err => {
+        document.getElementById('player-status').textContent = "Status: Tocando ♫";
+      });
+    }
+
     // Relógio Digital
     function updateClock() {
       const now = new Date();
