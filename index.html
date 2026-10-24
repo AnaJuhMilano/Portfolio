@@ -416,6 +416,41 @@
       color: #3a1c36;
       letter-spacing: 1px;
     }
+
+    /* ================= RESPONSIVIDADE PARA TELEMÓVEIS ================= */
+    @media screen and (max-width: 768px) {
+      #desktop {
+        padding: 12px 16px;
+      }
+
+      .retro-window {
+        width: 92vw !important;
+        max-width: 92vw !important;
+        left: 4vw !important;
+        top: 50px !important;
+        height: min(75vh, 480px) !important;
+      }
+
+      #center-plate-container {
+        width: 85vw !important;
+      }
+
+      .icons-column {
+        width: 90px;
+        gap: 12px;
+      }
+
+      .desktop-icon img, 
+      .desktop-icon div {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .desktop-icon span {
+        font-size: 7px;
+      }
+    }
+    
   </style>
 </head>
 <body>
