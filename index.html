@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ana Julia Milano — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -90,12 +90,49 @@
     }
 
     .desktop-icon span {
-      font-size: 8px;
+      font-size: 7.5px;
       color: #3b1b36;
       margin-top: 6px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      line-height: 1.4;
       text-transform: uppercase;
       text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff;
+      max-width: 110px;
+      word-break: break-word;
+    }
+
+    .pixel-postit {
+      position: absolute;
+      bottom: 65px;
+      left: 135px;
+      background: #cceeff;
+      border: 2px solid #5fa8d3;
+      border-radius: 6px;
+      box-shadow: 3px 4px 0px rgba(0,0,0,0.25);
+      padding: 10px 14px;
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      color: #0b3c5d;
+      z-index: 50;
+      user-select: none;
+      -webkit-user-select: none;
+      transform: rotate(-2deg);
+      cursor: grab;
+    }
+
+    .pixel-postit:active {
+      cursor: grabbing;
+    }
+
+    .pixel-postit::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 14px;
+      width: 16px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 2px;
     }
 
     /* 3. Placa Central "PORTFOLIO" */
@@ -121,7 +158,6 @@
       filter: drop-shadow(0 14px 28px rgba(220, 80, 150, 0.28));
     }
 
-    /* Animações de balanço suave e flutuação dos berloques */
     .charm-float-heart {
       transform-origin: 730px 45px;
       animation: floatSwayHeart 4.2s ease-in-out infinite alternate;
@@ -162,14 +198,14 @@
       100% { transform: translateY(-6px) rotate(-5deg); }
     }
 
-    /* 4. Janelas Retro Flutuantes (Redimensionáveis) */
+    /* 4. Janelas Retro Flutuantes */
     .retro-window {
       position: absolute;
       top: 60px;
       left: calc(50% - 300px);
       width: min(600px, 92vw);
       min-width: 320px;
-      min-height: 240px;
+      height: min(460px, 80vh);
       background: #fffbfe;
       border: 3px solid #ffffff;
       box-shadow: 4px 6px 0px rgba(186, 70, 128, 0.45),
@@ -228,6 +264,7 @@
       color: #432247;
       flex-grow: 1;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       user-select: text;
       -webkit-user-select: text;
     }
@@ -250,19 +287,18 @@
       margin-bottom: 8px;
     }
 
-    /* Alça de redimensionamento no canto inferior direito */
     .window-resizer {
       position: absolute;
       right: 2px;
       bottom: 2px;
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       cursor: se-resize;
       background: linear-gradient(135deg, transparent 50%, #ff8abb 50%, #ff8abb 75%, transparent 75%);
-      z-index: 10;
+      z-index: 50;
     }
 
-    /* Badges & Tags Estéticas */
+    /* Badges & Tags */
     .tag-container {
       display: flex;
       flex-wrap: wrap;
@@ -281,7 +317,7 @@
       box-shadow: 1px 2px 0px rgba(186, 70, 128, 0.2);
     }
 
-    /* Linha do Tempo / Timeline */
+    /* Timeline */
     .timeline-item {
       padding-left: 14px;
       border-left: 2px dashed #ff8abb;
@@ -311,7 +347,7 @@
       color: #2e1633;
     }
 
-    /* Links de Contato */
+    /* Contato */
     .contact-card {
       display: flex;
       flex-direction: column;
@@ -340,7 +376,6 @@
       transform: translateY(-1px);
     }
 
-    /* Moldura Polaróide / Foto Perfil Flexível */
     .photo-frame {
       width: clamp(180px, 40vw, 320px);
       background: #ffffff;
@@ -417,7 +452,130 @@
       letter-spacing: 1px;
     }
 
-    /* ================= RESPONSIVIDADE PARA TELEMÓVEIS ================= */
+    /* Sub-abas do Projeto Interdisciplinar */
+    .sub-tabs-container {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      background: #fff0f7;
+      padding: 6px;
+      border-radius: 8px;
+      border: 1px solid #ffbcdc;
+    }
+
+    .sub-tab-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: #72407d;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .sub-tab-btn.active {
+      background: #ffffff;
+      color: #9e2864;
+      border-color: #ff9ac9;
+      box-shadow: 1px 2px 4px rgba(186, 70, 128, 0.15);
+    }
+
+    /* Cards e Galeria do Projeto Interdisciplinar */
+    .inter-card {
+      background: #ffffff;
+      border: 1.5px solid #ffc2df;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 2px 3px 0px rgba(220, 80, 150, 0.12);
+    }
+
+    .inter-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .inter-img-box {
+      background: #fff7fb;
+      border: 1px solid #ffd4e8;
+      border-radius: 6px;
+      padding: 6px;
+      text-align: center;
+    }
+
+    .inter-img-box img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .inter-img-box span {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: #8b336a;
+      margin-top: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Player Winamp */
+    .player-box {
+      background: #2b1d30;
+      border: 2px solid #ff9ac9;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .player-screen {
+      background: #110915;
+      color: #00ff66;
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 1px solid #4a2854;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-controls {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .player-btn {
+      background: #ffe3f0;
+      border: 1.5px solid #ff9ac9;
+      border-radius: 4px;
+      color: #9e2864;
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .player-btn:hover {
+      background: #ff6584;
+      color: #ffffff;
+    }
+
+    /* Responsividade */
     @media screen and (max-width: 768px) {
       #desktop {
         padding: 12px 16px;
@@ -427,8 +585,8 @@
         width: 92vw !important;
         max-width: 92vw !important;
         left: 4vw !important;
-        top: 70px !important; /* Aumentámos para descer um pouco e não cortar o topo */
-        height: min(72vh, 460px) !important;
+        top: 70px !important;
+        height: min(78vh, 520px) !important;
       }
 
       #center-plate-container {
@@ -440,8 +598,7 @@
         gap: 12px;
       }
 
-      .desktop-icon img, 
-      .desktop-icon div {
+      .desktop-icon img {
         width: 44px !important;
         height: 44px !important;
       }
@@ -450,11 +607,73 @@
         font-size: 7px;
       }
     }
-    
+    /* Modal de Imagem em Tela Cheia */
+#image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 9, 23, 0.9);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-box img {
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 3px solid #ffb1d9;
+  background: #ffffff;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  background: #ffe3f0;
+  border: 2px solid #ffffff;
+  color: #9e2864;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffe3f0;
+  border: 2px solid #ffffff;
+  color: #9e2864;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.lightbox-prev { left: -50px; }
+.lightbox-next { right: -50px; }
+
   </style>
 </head>
 <body>
   <audio id="bg-audio" preload="auto" loop></audio>
+
   <!-- Área de Trabalho -->
   <main id="desktop">
 
@@ -484,8 +703,16 @@
         <img src="./icons/experiencia.png" onerror="this.onerror=null; this.src='experiencia.png';" alt="Experiência">
         <span>Experiência</span>
       </div>
+
+      <div class="desktop-icon" onclick="openWindow('win-interdisciplinar')">
+        <img src="./icons/projeto interdisciplinar.png" onerror="this.onerror=null; this.src='projeto interdisciplinar.png';" alt="Projeto Interdisciplinar">
+        <span>Projeto Interdisc.</span>
+      </div>
     </div>
 
+    <!-- POST-IT (com id para manter o arrastável funcional) -->
+    <div class="pixel-postit" id="my-postit">Para Mariangela ♡</div>
+    
     <!-- Placa Central com Berloques 3D e Palavra "PORTFOLIO" -->
     <div id="center-plate-container">
       <svg class="plate-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300">
@@ -523,11 +750,9 @@
           </radialGradient>
         </defs>
 
-        <!-- ================= 1. PLACA BASE ================= -->
         <rect x="78" y="44" width="704" height="206" rx="8" fill="#ff7abb" opacity="0.45" />
         <rect x="80" y="46" width="700" height="202" rx="6" fill="url(#plateFace)" stroke="#ffffff" stroke-width="3" />
 
-        <!-- ================= 2. TEXTO PIXEL ART "PORTFOLIO" ================= -->
         <g fill="#ff7abb" transform="translate(10, 5)">
           <path d="M 108 98 H 154 V 162 H 132 V 206 H 108 Z M 132 118 V 144 H 140 V 118 Z" />
           <path d="M 166 98 H 222 V 206 H 166 Z M 190 118 V 186 H 198 V 118 Z" />
@@ -552,8 +777,6 @@
           <path d="M 598 98 H 654 V 206 H 598 Z M 622 118 V 186 H 630 V 118 Z" />
         </g>
 
-        <!-- ================= 3. BERLOQUES 3D COM BALANÇO ================= -->
-        <!-- Estrela Topo Esquerdo -->
         <g class="charm-float-star-tl" filter="url(#charmShadow)">
           <path d="M 85 10 C 88 44, 104 60, 136 64 C 104 68, 88 84, 85 118 C 82 84, 66 68, 34 64 C 66 60, 82 44, 85 10 Z" fill="url(#starPinkGrad)" />
           <ellipse cx="78" cy="50" rx="12" ry="5.5" transform="rotate(-35 78 50)" fill="#ffffff" opacity="0.92" />
@@ -561,7 +784,6 @@
           <circle cx="72" cy="62" r="2.5" fill="#ffffff" opacity="0.75" />
         </g>
 
-        <!-- Coração Topo Direito -->
         <g class="charm-float-heart" filter="url(#charmShadow)">
           <path d="M 730 115 C 690 85, 660 62, 660 34 C 660 10, 676 -6, 700 -6 C 716 -6, 726 4, 730 14 C 734 4, 744 -6, 760 -6 C 784 -6, 800 10, 800 34 C 800 62, 770 85, 730 115 Z" fill="url(#charmPinkGlossy)" />
           <ellipse cx="692" cy="18" rx="15" ry="8" transform="rotate(-30 692 18)" fill="#ffffff" opacity="0.92" />
@@ -569,7 +791,6 @@
           <circle cx="688" cy="42" r="4.5" fill="#ffffff" opacity="0.7" />
         </g>
 
-        <!-- Pen Tool Canto Inferior Esquerdo -->
         <g class="charm-float-pentool" filter="url(#charmShadow)">
           <rect x="52" y="166" width="66" height="12" rx="5" fill="#f8b6d4" stroke="#ffffff" stroke-width="1.5" />
           <rect x="58" y="174" width="54" height="6" fill="#ba1856" opacity="0.4" />
@@ -582,7 +803,6 @@
           <circle cx="85" cy="280" r="1.5" fill="#ffffff" opacity="0.9" />
         </g>
 
-        <!-- Estrela Canto Inferior Direito -->
         <g class="charm-float-star-br" filter="url(#charmShadow)">
           <path d="M 752 170 C 755 204, 772 222, 806 224 C 772 227, 755 244, 752 280 C 749 244, 732 227, 698 224 C 732 222, 749 204, 752 170 Z" fill="url(#starPinkGrad)" />
           <ellipse cx="742" cy="208" rx="8" ry="4" transform="rotate(-35 742 208)" fill="#ffffff" opacity="0.85" />
@@ -607,7 +827,7 @@
         <img src="./icons/music.png" onerror="this.onerror=null; this.src='music.png';" alt="Music" style="width: 52px; height: 52px; object-fit: contain; image-rendering: pixelated; display: block;">
         <span>Music.mp3</span>
       </div>
-      
+
       <div class="desktop-icon" onclick="openWindow('win-contato')">
         <img src="./icons/contato.png" onerror="this.onerror=null; this.src='contato.png';" alt="Contato">
         <span>Contato</span>
@@ -621,15 +841,13 @@
   <div class="retro-window" id="win-sobre">
     <div class="window-header">
       <span>SOBRE_MIM.TXT</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-sobre')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-sobre')">×</button></div>
     </div>
     <div class="window-body">
       <h2>💗 Hey, eu sou a Ana Julia!</h2>
-      <p>Sou uma designer gráfico apaixonada por criar visuais limpos e memoráveis que ajudam marcas a se destacarem.</p>
+      <p>Sou uma <b>designer gráfico</b> apaixonada por criar visuais limpos e memoráveis que ajudam marcas a se destacarem.</p>
       <br>
-      <p>Especializada em branding, design digital e narrativa criativa, transformo ideias em projetos que são, ao mesmo tempo, belos e eficazes. Meus designs são concebidos com criatividade e propósito.</p>
+      <p>Especializada em <b>branding</b>, <b>design digital</b> e <b>narrativa criativa</b>, transformo ideias em projetos que são, ao mesmo tempo, belos e eficazes. Meus designs são concebidos com criatividade e propósito.</p>
     </div>
     <div class="window-resizer"></div>
   </div>
@@ -638,9 +856,7 @@
   <div class="retro-window" id="win-eu">
     <div class="window-header">
       <span>ESSA_SOU_EU.JPG</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-eu')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-eu')">×</button></div>
     </div>
     <div class="window-body" style="text-align: center;">
       <div class="photo-frame">
@@ -657,9 +873,7 @@
   <div class="retro-window" id="win-softwares">
     <div class="window-header">
       <span>SOFTWARES.EXE</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-softwares')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-softwares')">×</button></div>
     </div>
     <div class="window-body">
       <h2>🛠️ Softwares & Ferramentas</h2>
@@ -681,9 +895,7 @@
   <div class="retro-window" id="win-competencias">
     <div class="window-header">
       <span>HABILIDADES.SYS</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-competencias')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-competencias')">×</button></div>
     </div>
     <div class="window-body">
       <h2>💡 Especialidades Técnicas</h2>
@@ -712,9 +924,7 @@
   <div class="retro-window" id="win-experiencia">
     <div class="window-header">
       <span>LEVEL_UP.DAT</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-experiencia')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-experiencia')">×</button></div>
     </div>
     <div class="window-body">
       <h2>🎓 Escolaridade & Formação</h2>
@@ -753,16 +963,148 @@
     <div class="window-resizer"></div>
   </div>
 
-  <!-- 6. Projetos com Abas de Cases -->
-  <div class="retro-window" id="win-projetos" style="width: min(660px, 95vw);">
+  <!-- 6. Janela Independente do PROJETO INTERDISCIPLINAR -->
+  <div class="retro-window" id="win-interdisciplinar" style="width: min(720px, 95vw);">
     <div class="window-header">
-      <span>PROJETOS.DIR // CASES_STUDY.EXE</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-projetos')">×</button>
+      <span>PROJETO_INTERDISCIPLINAR.EXE // EXTENSAO_UNIVERSITARIA</span>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-interdisciplinar')">×</button></div>
+    </div>
+    <div class="window-body">
+      <h2>🏛️ Projeto Interdisciplinar & Extensão</h2>
+
+      <div class="sub-tabs-container">
+        <button id="main-subtab-btn-spaa" class="sub-tab-btn active" onclick="switchInterStandaloneTab('main-subcase-spaa')">
+          🐾 Case 1: ONG SPAA (Criatividade & Modelo Criativo)
+        </button>
+        <button id="main-subtab-btn-manaque" class="sub-tab-btn" onclick="switchInterStandaloneTab('main-subcase-manaque')">
+          📱 Case 2: MANAQUE (Desenvolvimento do Produto)
+        </button>
+      </div>
+
+      <!-- ABA SPAA: Pasta "Criatividade e Modelo Criativo" -->
+      <div id="main-subcase-spaa">
+        <div style="background: #eefbf4; border: 1.5px solid #6ee7b7; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+          <h3 style="color: #064e3b; margin-top: 0;">SPAA — Sociedade Protetora dos Animais Abandonados</h3>
+          <p style="font-size: 13px; color: #064e3b; margin-top: 4px;">Identidade visual, estudos modulares e simetrias rígidas.</p>
+        </div>
+
+        <div class="inter-card">
+          <h3 style="color: #9e2864; margin-top: 2px;">📐 Atividade 4: Conceito e Identidade Visual</h3>
+          <div class="inter-gallery-grid">
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade4%20CriacaodeConceitoeAplicacaoCriativapara-imagens-0.jpg" alt="Conceito 0">
+              <span>Conceito 01</span>
+            </div>
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade4%20CriacaodeConceitoeAplicacaoCriativapara-imagens-5.jpg" alt="Conceito 5">
+              <span>Conceito 05</span>
+            </div>
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade4%20CriacaodeConceitoeAplicacaoCriativapara-imagens-9.jpg" alt="Conceito 9">
+              <span>Aplicações</span>
+            </div>
+          </div>
+
+          <h3 style="color: #9e2864; margin-top: 16px;">🧩 Atividade Final: Simetrias Rígidas & Modularidade</h3>
+          <div class="inter-gallery-grid">
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade%20Final%20%20Simetrias%20Rigidas%20e%20Modularidade%20em%20pecas%20de%20Design-imagens-0.jpg" alt="Simetrias 0">
+              <span>Grid Inicial</span>
+            </div>
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade%20Final%20%20Simetrias%20Rigidas%20e%20Modularidade%20em%20pecas%20de%20Design-imagens-7.jpg" alt="Simetrias 7">
+              <span>Padrão Modular</span>
+            </div>
+            <div class="inter-img-box" onclick="openLightbox(this)">
+              <img src="./Criatividade%20e%20Modelo%20Criativo/Atividade%20Final%20%20Simetrias%20Rigidas%20e%20Modularidade%20em%20pecas%20de%20Design-imagens-14.jpg" alt="Simetrias 14">
+              <span>Composição</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA MANAQUE: Pasta "Desenvolvimento do Produto" -->
+      <div id="main-subcase-manaque" style="display: none;">
+        <div style="background: #fff8eb; border: 1.5px solid #e5b364; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+          <h3 style="color: #78350f; margin-top: 0;">MANAQUE — Porto Seguro Digital para a Longevidade</h3>
+          <p style="font-size: 13px; color: #451a03; margin-top: 4px;">Rede social para a terceira idade baseada em almanaques impressos.</p>
+        </div>
+
+        <div class="inter-card">
+          <h3 style="color: #9e2864; margin-top: 2px;">📦 Atividade 1: Pesquisa & Conceituação</h3>
+          <div class="inter-gallery-grid">
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv1DdP-imagens-0.jpg" alt="Etapa 1"><span>Capa Manaque</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv1DdP-imagens-1.jpg" alt="Etapa 2"><span>Diagnóstico</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv1DdP-imagens-2.jpg" alt="Etapa 3"><span>Referências</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv1DdP-imagens-3.jpg" alt="Etapa 4"><span>Diretrizes</span></div>
+          </div>
+
+          <h3 style="color: #9e2864; margin-top: 16px;">✏️ Atividade 2: Experimentação & Personas</h3>
+          <div class="inter-gallery-grid">
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv2DdP-imagens-0.jpg" alt="Estudo 1"><span>Apresentação</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv2DdP-imagens-1.jpg" alt="Estudo 2"><span>Persona Helena</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv2DdP-imagens-10.jpg" alt="Estudo 10"><span>Protótipo Físico</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/Atv2DdP-imagens-18.jpg" alt="Estudo 18"><span>Wireframe Marlene</span></div>
+          </div>
+
+          <h3 style="color: #9e2864; margin-top: 16px;">🏁 Atividade Final: Entrega Consolidada</h3>
+          <div class="inter-gallery-grid">
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/AtvFinalDdp-imagens-0.jpg" alt="Prancha Final"><span>Identidade</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/AtvFinalDdp-imagens-5.jpg" alt="Mockup"><span>Onboarding Afetivo</span></div>
+            <div class="inter-img-box" onclick="openLightbox(this)"><img src="./Desenvolvimento%20do%20Produto/AtvFinalDdp-imagens-14.jpg" alt="Resultado"><span>Especificações</span></div>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- Aba de remanejar tamanho da janela de volta -->
+    <div class="window-resizer"></div>
+        </div>
+        </div>
+      </div>
+
+      <!-- ABA 2: MANAQUE -->
+      <div id="main-subcase-manaque" style="display: none;">
+        <div style="background: #fff8eb; border: 1.5px solid #e5b364; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+          <h3 style="margin-top: 4px; color: #78350f;">MANAQUE — Porto Seguro Digital para a Longevidade</h3>
+          <p style="font-size: 13px; color: #451a03; margin-top: 4px;">
+            Rede social concebida sob o conceito de <b>"Nostalgia Confortável"</b>, resgatando a diagramação das revistas e almanaques das décadas de 60/70 para combater a ansiedade tecnológica.
+          </p>
+        </div>
+        <div class="tag-container">
+          <span class="badge-tag">Acessibilidade 60+</span>
+          <span class="badge-tag">Design Emocional</span>
+          <span class="badge-tag">Figma Prototyping</span>
+        </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA MANAQUE -->
+      <div id="main-subcase-manaque" style="display: none;">
+        <div style="background: #fff8eb; border: 1.5px solid #e5b364; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+          <h3 style="margin-top: 4px; color: #78350f;">MANAQUE — Porto Seguro Digital para a Longevidade</h3>
+          <p style="font-size: 13px; color: #451a03; margin-top: 4px;">
+            Rede social concebida sob o conceito de <b>"Nostalgia Confortável"</b>, resgatando a diagramação das revistas e almanaques das décadas de 60/70 para combater a ansiedade tecnológica na terceira idade.
+          </p>
+        </div>
+        <div class="tag-container">
+          <span class="badge-tag">Acessibilidade 60+</span>
+          <span class="badge-tag">Design Emocional</span>
+          <span class="badge-tag">Figma Prototyping</span>
+        </div>
+      </div>
+    </div>
+    <div class="window-resizer"></div>
+  </div>
+
+  <!-- 7. Projetos com Abas de Cases -->
+  <div class="retro-window" id="win-projetos" style="width: min(680px, 95vw);">
+    <div class="window-header">
+      <span>PROJETOS.DIR // CASES_STUDY.EXE</span>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-projetos')">×</button></div>
+    </div>
     
-    <!-- Barra de Abas Retro -->
     <div style="display: flex; gap: 4px; background: #ffe3f1; padding: 6px 12px 0 12px; border-bottom: 2px solid #ff9ac9; overflow-x: auto;">
       <button id="tab-btn-1" onclick="switchCaseTab('case-leogodoy')" style="background: #ffffff; border: 2px solid #ff9ac9; border-bottom: none; border-radius: 6px 6px 0 0; padding: 6px 10px; font-family: var(--font-pixel); font-size: 7px; color: #9e2864; cursor: pointer; white-space: nowrap;">
         🥊 Leo Godoy
@@ -776,10 +1118,9 @@
     </div>
 
     <div class="window-body">
-      <!-- ================= CASE 01: LEO GODOY ================= -->
+      <!-- CASE 01: LEO GODOY -->
       <div id="case-leogodoy">
         <h2>🥊 Leo Godoy — Muay Thai & Personal</h2>
-
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
           <div style="background: #111; border-radius: 6px; padding: 8px; text-align: center; border: 1.5px solid #ff9ac9;">
             <img src="./Leo/luvas.png" onerror="this.onerror=null; this.src='luvas.png';" alt="Mockup Luvas Leo Godoy" style="width: 100%; height: 170px; object-fit: contain; border-radius: 4px;">
@@ -790,31 +1131,15 @@
             <span style="font-size: 10px; font-weight: 800; color: #9e2864; margin-top: 6px; display: block;">Símbolo Monograma (L+G)</span>
           </div>
         </div>
-
         <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
           <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 O Desafio & Posicionamento:</p>
-          <p style="font-size: 13px; color: #432247;">
-            Desenvolver uma identidade visual consolidada para um treinador de Muay Thai e personal trainer local, garantindo reconhecimento visual imediato no mercado fitness regional.
-          </p>
-        </div>
-
-        <h3>💡 Conceito do Símbolo</h3>
-        <p style="font-size: 13px; color: #432247; margin-bottom: 12px;">
-          As iniciais <b>"L"</b> e <b>"G"</b> fundidas em uma estrutura ortogonal chanfrada que evoca um punho cerrado e uma luva de combate.
-        </p>
-
-        <h3>🎨 Paleta & Tipografia</h3>
-        <div class="tag-container" style="margin-bottom: 14px;">
-          <span class="badge-tag">Bordô Marcial</span>
-          <span class="badge-tag">Verde Floresta</span>
-          <span class="badge-tag">Athletic Slab Typography</span>
+          <p style="font-size: 13px; color: #432247;">Desenvolver uma identidade visual consolidada para um treinador de Muay Thai e personal trainer.</p>
         </div>
       </div>
 
-      <!-- ================= CASE 02: KOMBI KITCHEN ================= -->
+      <!-- CASE 02: KOMBI KITCHEN -->
       <div id="case-kombikitchen" style="display: none;">
         <h2>🚐 Kombi Kitchen — Oficina Móvel de Cozinha</h2>
-
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
           <div style="background: #ffffff; border-radius: 6px; padding: 8px; text-align: center; border: 1.5px solid #ff9ac9;">
             <img src="./Kombi/mockup.png" onerror="this.onerror=null; this.src='mockup.png';" alt="Mockup Kombi Kitchen" style="width: 100%; height: 170px; object-fit: contain; border-radius: 4px;">
@@ -825,51 +1150,25 @@
             <span style="font-size: 10px; font-weight: 800; color: #9e2864; margin-top: 6px; display: block;">Logotipo Lettering</span>
           </div>
         </div>
-
         <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
           <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 Descrição do Negócio & Conceito:</p>
-          <p style="font-size: 13px; color: #432247;">
-            Oficina móvel especializada na manutenção de utensílios e equipamentos de cozinha operando diretamente a partir de um veículo adaptado. O projeto resgata a tradição da assistência de proximidade sob uma ótica moderna, unindo o apelo afetivo da Kombi clássica com o rigor de uma oficina profissional.
-          </p>
-        </div>
-
-        <h3>🎨 Identidade Visual & Tipografia</h3>
-        <p style="font-size: 13px; color: #432247; margin-bottom: 10px;">
-          Lettering expressivo de forte inspiração retrô setentista, acompanhado por uma paleta vibrante com <b>Coral Vintage (#E87277)</b> e <b>Roxo Profundo (#2D0978)</b>, complementada pelas fontes Chunky Retro e Poor Richard.
-        </p>
-
-        <div class="tag-container" style="margin-bottom: 14px;">
-          <span class="badge-tag" style="background: #E87277; color: #fff; border-color: #c4585c;">Coral Vintage</span>
-          <span class="badge-tag" style="background: #2D0978; color: #fff; border-color: #1a0445;">Roxo Profundo</span>
-          <span class="badge-tag">Branding Móvel</span>
-          <span class="badge-tag">Manual de Identidade Visual</span>
+          <p style="font-size: 13px; color: #432247;">Oficina móvel especializada na manutenção de utensílios e equipamentos de cozinha operando a partir de um veículo adaptado.</p>
         </div>
       </div>
 
-      <!-- ================= CASE 03: PORTFOLIO OS ================= -->
+      <!-- CASE 03: PORTFOLIO OS -->
       <div id="case-portfolio" style="display: none;">
         <h2>✨ Case: Portfolio — Retro Digital Experience</h2>
-        
         <div style="background: #ffeef7; border: 1.5px solid #ff9ac9; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
           <p style="font-size: 13px; font-weight: 800; color: #9e2864; margin-bottom: 4px;">🎯 O Desafio:</p>
-          <p style="font-size: 13px; color: #432247;">
-            Superar portfólios estáticos em PDF criando uma plataforma proprietária interativa que evidencia competência em UI/UX, arquitetura de informação e front-end criativo.
-          </p>
-        </div>
-
-        <h3>🛠️ Tecnologias & UX</h3>
-        <div class="tag-container" style="margin-bottom: 14px;">
-          <span class="badge-tag">UI / UX Architecture</span>
-          <span class="badge-tag">HTML5 & CSS3 Keyframes</span>
-          <span class="badge-tag">JavaScript DOM API</span>
-          <span class="badge-tag">Pixel Art & Vibe Coding</span>
+          <p style="font-size: 13px; color: #432247;">Superar portfólios estáticos em PDF criando uma plataforma proprietária interativa.</p>
         </div>
       </div>
     </div>
     <div class="window-resizer"></div>
   </div>
 
-<!-- Solitaire Iframe -->
+  <!-- Solitaire Iframe -->
   <div class="retro-window" id="win-solitaire" style="width: min(680px, 95vw); height: 500px;">
     <div class="window-header">
       <span>SOLITAIRE.EXE</span>
@@ -881,7 +1180,7 @@
     <div class="window-resizer"></div>
   </div>
 
- <!-- Player de Música (Winamp Local) -->
+  <!-- Player de Música (Winamp Local) -->
   <div class="retro-window" id="win-player" style="width: 380px;">
     <div class="window-header">
       <span>WINAMP_PLAYER.EXE</span>
@@ -889,9 +1188,7 @@
     </div>
     <div class="window-body">
       <div class="player-box">
-        <div class="player-screen" id="track-title">
-          ▶ 01. Lofi (Pixabay)
-        </div>
+        <div class="player-screen" id="track-title">▶ 01. Lofi Track 1</div>
         <div style="font-size: 10px; color: #00ff66; margin-bottom: 10px;" id="player-status">Status: Pausado ⏹</div>
         <div class="player-controls">
           <button class="player-btn" onclick="prevTrack()">ANTERIOR</button>
@@ -903,48 +1200,34 @@
     <div class="window-resizer"></div>
   </div>
 
-  <!-- 7. Contato -->
+  <!-- 8. Contato -->
   <div class="retro-window" id="win-contato">
     <div class="window-header">
       <span>CONTATO.EXE</span>
-      <div class="window-controls">
-        <button class="win-btn" onclick="closeWindow('win-contato')">×</button>
-      </div>
+      <div class="window-controls"><button class="win-btn" onclick="closeWindow('win-contato')">×</button></div>
     </div>
     <div class="window-body">
       <h2>💌 Vamos criar juntos?</h2>
       <p style="font-size: 13px; margin-bottom: 14px;">Sinta-se à vontade para me mandar uma mensagem:</p>
-      
       <div class="contact-card">
         <a href="mailto:anajuhmilano@gmail.com" class="contact-button" target="_blank">
           <span>✉️</span>
-          <div>
-            <div style="font-size: 11px; opacity: 0.7;">E-MAIL</div>
-            anajuhmilano@gmail.com
-          </div>
+          <div><div style="font-size: 11px; opacity: 0.7;">E-MAIL</div>anajuhmilano@gmail.com</div>
         </a>
-
         <a href="https://wa.me/5518996392866" class="contact-button" target="_blank">
           <span>💬</span>
-          <div>
-            <div style="font-size: 11px; opacity: 0.7;">WHATSAPP / TELEFONE</div>
-            +55 18 99639-2866
-          </div>
+          <div><div style="font-size: 11px; opacity: 0.7;">WHATSAPP / TELEFONE</div>+55 18 99639-2866</div>
         </a>
-
         <a href="https://instagram.com/anajuhmilano" class="contact-button" target="_blank">
           <span>🌸</span>
-          <div>
-            <div style="font-size: 11px; opacity: 0.7;">INSTAGRAM</div>
-            @anajuhmilano
-          </div>
+          <div><div style="font-size: 11px; opacity: 0.7;">INSTAGRAM</div>@anajuhmilano</div>
         </a>
       </div>
     </div>
     <div class="window-resizer"></div>
   </div>
 
-  <!-- Barra de Tarefas com o Botão START Blindado -->
+  <!-- Barra de Tarefas -->
   <footer id="taskbar">
     <button class="start-btn" onclick="openWindow('win-sobre')">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 64" class="start-svg">
@@ -956,14 +1239,8 @@
           </linearGradient>
         </defs>
 
-        <!-- Sombra inferior do botão -->
-        <path d="
-          M 20 60 H 140 V 62 H 20 Z
-          M 14 58 H 146 V 60 H 14 Z
-          M 10 56 H 150 V 58 H 10 Z
-        " fill="#c98ecf" opacity="0.45" />
+        <path d="M 20 60 H 140 V 62 H 20 Z M 14 58 H 146 V 60 H 14 Z M 10 56 H 150 V 58 H 10 Z" fill="#c98ecf" opacity="0.45" />
 
-        <!-- Corpo arredondado do botão -->
         <path d="
           M 16 0 H 144 V 4 H 16 Z
           M 10 4 H 150 V 8 H 10 Z
@@ -976,7 +1253,6 @@
           M 16 56 H 144 V 60 H 16 Z
         " fill="url(#pixelBg)" />
 
-        <!-- Sombra Rosa do Texto -->
         <g fill="#ff6bbd">
           <path d="M 29 20 H 45 V 24 H 29 Z M 25 24 H 33 V 34 H 25 Z M 29 32 H 45 V 36 H 29 Z M 37 36 H 45 V 46 H 37 Z M 25 44 H 41 V 48 H 25 Z" />
           <path d="M 48 20 H 64 V 24 H 48 Z M 54 24 H 58 V 48 H 54 Z" />
@@ -985,7 +1261,6 @@
           <path d="M 110 20 H 126 V 24 H 110 Z M 116 24 H 120 V 48 H 116 Z" />
         </g>
 
-        <!-- Texto Frontal Preto/Grafite -->
         <g fill="#2b2b2b">
           <path d="M 27 18 H 43 V 22 H 27 Z M 23 22 H 31 V 32 H 23 Z M 27 30 H 43 V 34 H 27 Z M 35 34 H 43 V 44 H 35 Z M 23 42 H 39 V 46 H 23 Z" />
           <path d="M 46 18 H 62 V 22 H 46 Z M 52 22 H 56 V 46 H 52 Z" />
@@ -995,17 +1270,13 @@
         </g>
       </svg>
     </button>
-
     <div style="display: flex; align-items: center; gap: 10px;">
-      <a href="index-en.html" style="background: #ffe3f0; border: 1.5px solid #ffffff; border-radius: 4px; padding: 4px 8px; font-family: var(--font-pixel); font-size: 8px; color: #9e2864; text-decoration: none; box-shadow: 1px 1px 0px rgba(186,70,128,0.3); display: flex; align-items: center; gap: 4px;">
-        <span>🌐</span> EN
-      </a>
+      <a href="index-en.html" style="background: #ffe3f0; border: 1.5px solid #ffffff; border-radius: 4px; padding: 4px 8px; font-family: var(--font-pixel); font-size: 8px; color: #9e2864; text-decoration: none;"><span>🌐</span> EN</a>
       <div class="clock" id="clock">00:00:00</div>
     </div>
   </footer>
 
   <script>
-    // Player de Música Otimizado com as 5 faixas
     const audioPlayer = document.getElementById('bg-audio');
     const tracks = [
       { name: "▶ 01. Lofi Track 1", src: "./musicas/track1.mp3" },
@@ -1016,231 +1287,217 @@
     ];
     let currentTrackIdx = 0;
 
-    window.addEventListener('DOMContentLoaded', () => {
-      audioPlayer.src = tracks[0].src;
-      audioPlayer.load();
-    });
+    window.addEventListener('DOMContentLoaded', () => { audioPlayer.src = tracks[0].src; audioPlayer.load(); });
 
     function togglePlayMusic() {
       if (audioPlayer.paused) {
-        audioPlayer.play().then(() => {
-          document.getElementById('player-status').textContent = "Status: Tocando ♫";
-        }).catch(err => {
-          audioPlayer.play();
-          document.getElementById('player-status').textContent = "Status: Tocando ♫";
-        });
+        audioPlayer.play().then(() => { document.getElementById('player-status').textContent = "Status: Tocando ♫"; }).catch(() => { audioPlayer.play(); });
       } else {
         audioPlayer.pause();
         document.getElementById('player-status').textContent = "Status: Pausado ⏹";
       }
     }
 
-    function nextTrack() {
-      currentTrackIdx = (currentTrackIdx + 1) % tracks.length;
-      playCurrentTrack();
-    }
-
-    function prevTrack() {
-      currentTrackIdx = (currentTrackIdx - 1 + tracks.length) % tracks.length;
-      playCurrentTrack();
-    }
+    function nextTrack() { currentTrackIdx = (currentTrackIdx + 1) % tracks.length; playCurrentTrack(); }
+    function prevTrack() { currentTrackIdx = (currentTrackIdx - 1 + tracks.length) % tracks.length; playCurrentTrack(); }
 
     function playCurrentTrack() {
       audioPlayer.src = tracks[currentTrackIdx].src;
       document.getElementById('track-title').textContent = tracks[currentTrackIdx].name;
       audioPlayer.load();
-      audioPlayer.play().then(() => {
-        document.getElementById('player-status').textContent = "Status: Tocando ♫";
-      }).catch(err => {
-        document.getElementById('player-status').textContent = "Status: Tocando ♫";
-      });
+      audioPlayer.play();
     }
 
-    // Relógio Digital
     function updateClock() {
       const now = new Date();
-      const h = String(now.getHours()).padStart(2, '0');
-      const m = String(now.getMinutes()).padStart(2, '0');
-      const s = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+      document.getElementById('clock').textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Sistema de Janelas
     let topZ = 150;
+    function openWindow(id) { const win = document.getElementById(id); if (win) { win.style.display = 'flex'; win.style.zIndex = ++topZ; } }
+    function closeWindow(id) { const win = document.getElementById(id); if (win) win.style.display = 'none'; }
 
-    function openWindow(id) {
-      const win = document.getElementById(id);
-      if (!win) return;
-      win.style.display = 'flex';
-      win.style.zIndex = ++topZ;
-    }
-
-    function closeWindow(id) {
-      const win = document.getElementById(id);
-      if (win) win.style.display = 'none';
-    }
-
-    // Alternar Abas de Cases na janela de Projetos
     function switchCaseTab(caseId) {
-      const caseLeo = document.getElementById('case-leogodoy');
-      const caseKombi = document.getElementById('case-kombikitchen');
-      const casePort = document.getElementById('case-portfolio');
-      const btn1 = document.getElementById('tab-btn-1');
-      const btn2 = document.getElementById('tab-btn-2');
-      const btn3 = document.getElementById('tab-btn-3');
-
-      // Ocultar todos
-      caseLeo.style.display = 'none';
-      caseKombi.style.display = 'none';
-      casePort.style.display = 'none';
-      btn1.style.background = '#ffd6eb'; btn1.style.color = '#72407d';
-      btn2.style.background = '#ffd6eb'; btn2.style.color = '#72407d';
-      btn3.style.background = '#ffd6eb'; btn3.style.color = '#72407d';
-
-      // Exibir o selecionado
-      if (caseId === 'case-leogodoy') {
-        caseLeo.style.display = 'block';
-        btn1.style.background = '#ffffff';
-        btn1.style.color = '#9e2864';
-      } else if (caseId === 'case-kombikitchen') {
-        caseKombi.style.display = 'block';
-        btn2.style.background = '#ffffff';
-        btn2.style.color = '#9e2864';
-      } else {
-        casePort.style.display = 'block';
-        btn3.style.background = '#ffffff';
-        btn3.style.color = '#9e2864';
-      }
+      document.getElementById('case-leogodoy').style.display = caseId === 'case-leogodoy' ? 'block' : 'none';
+      document.getElementById('case-kombikitchen').style.display = caseId === 'case-kombikitchen' ? 'block' : 'none';
+      document.getElementById('case-portfolio').style.display = caseId === 'case-portfolio' ? 'block' : 'none';
+      document.getElementById('tab-btn-1').style.background = caseId === 'case-leogodoy' ? '#ffffff' : '#ffd6eb';
+      document.getElementById('tab-btn-2').style.background = caseId === 'case-kombikitchen' ? '#ffffff' : '#ffd6eb';
+      document.getElementById('tab-btn-3').style.background = caseId === 'case-portfolio' ? '#ffffff' : '#ffd6eb';
     }
 
-   // 1. Janelas Arrastáveis (Suporte completo a Rato e Toque)
+    function switchInterStandaloneTab(subcaseId) {
+      document.getElementById('main-subcase-manaque').style.display = subcaseId === 'main-subcase-manaque' ? 'block' : 'none';
+      document.getElementById('main-subcase-spaa').style.display = subcaseId === 'main-subcase-spaa' ? 'block' : 'none';
+      document.getElementById('main-subtab-btn-manaque').classList.toggle('active', subcaseId === 'main-subcase-manaque');
+      document.getElementById('main-subtab-btn-spaa').classList.toggle('active', subcaseId === 'main-subcase-spaa');
+    }
+
+    // Drag & Drop com suporte completo a scroll e toque
     document.querySelectorAll('.retro-window').forEach(win => {
       const header = win.querySelector('.window-header');
-      let isDragging = false;
-      let startX, startY, initialLeft, initialTop;
+      let isDragging = false, startX, startY, initialLeft, initialTop;
 
       win.addEventListener('mousedown', () => { win.style.zIndex = ++topZ; });
       win.addEventListener('touchstart', () => { win.style.zIndex = ++topZ; }, { passive: true });
 
-      function startDrag(clientX, clientY) {
-        isDragging = true;
-        startX = clientX;
-        startY = clientY;
-        const rect = win.getBoundingClientRect();
-        initialLeft = rect.left;
-        initialTop = rect.top;
-      }
-
-      function onMove(clientX, clientY) {
-        if (!isDragging) return;
-        win.style.left = `${initialLeft + (clientX - startX)}px`;
-        win.style.top = `${initialTop + (clientY - startY)}px`;
-      }
-
-      function endDrag() {
-        isDragging = false;
-      }
-
-      // Eventos de Rato (PC)
       header.addEventListener('mousedown', (e) => {
         if (e.target.classList.contains('win-btn')) return;
-        startDrag(e.clientX, e.clientY);
-
-        function onMouseMove(e) { onMove(e.clientX, e.clientY); }
-        function onMouseUp() {
-          endDrag();
-          window.removeEventListener('mousemove', onMouseMove);
-          window.removeEventListener('mouseup', onMouseUp);
-        }
-        window.addEventListener('mousemove', onMouseMove);
-        window.addEventListener('mouseup', onMouseUp);
+        isDragging = true; startX = e.clientX; startY = e.clientY;
+        const rect = win.getBoundingClientRect(); initialLeft = rect.left; initialTop = rect.top;
+        const onMouseMove = (e) => { win.style.left = `${initialLeft + (e.clientX - startX)}px`; win.style.top = `${initialTop + (e.clientY - startY)}px`; };
+        const onMouseUp = () => { isDragging = false; window.removeEventListener('mousemove', onMouseMove); window.removeEventListener('mouseup', onMouseUp); };
+        window.addEventListener('mousemove', onMouseMove); window.addEventListener('mouseup', onMouseUp);
       });
 
-      // Eventos de Toque (Telemóvel / Tablet)
       header.addEventListener('touchstart', (e) => {
-        if (e.target.classList.contains('win-btn')) return;
+        if (e.target.classList.contains('win-btn') || e.touches.length > 1) return;
         const touch = e.touches[0];
-        startDrag(touch.clientX, touch.clientY);
-        if (e.cancelable) e.preventDefault(); // Impede o scroll da página ao tentar arrastar no telemóvel
-
-        function onTouchMove(e) {
-          const t = e.touches[0];
-          onMove(t.clientX, t.clientY);
-        }
-        function onTouchEnd() {
-          endDrag();
-          window.removeEventListener('touchmove', onTouchMove);
-          window.removeEventListener('touchend', onTouchEnd);
-        }
-        window.addEventListener('touchmove', onTouchMove, { passive: false });
-        window.addEventListener('touchend', onTouchEnd);
+        isDragging = true; startX = touch.clientX; startY = touch.clientY;
+        const rect = win.getBoundingClientRect(); initialLeft = rect.left; initialTop = rect.top;
+        if (e.cancelable) e.preventDefault();
+        const onTouchMove = (e) => { const t = e.touches[0]; win.style.left = `${initialLeft + (t.clientX - startX)}px`; win.style.top = `${initialTop + (t.clientY - startY)}px`; };
+        const onTouchEnd = () => { isDragging = false; window.removeEventListener('touchmove', onTouchMove); window.removeEventListener('touchend', onTouchEnd); };
+        window.addEventListener('touchmove', onTouchMove, { passive: false }); window.addEventListener('touchend', onTouchEnd);
       }, { passive: false });
     });
 
-    // 2. Janelas Redimensionáveis (Suporte completo a Rato e Toque no cantinho)
+    // Redimensionamento das Janelas
     document.querySelectorAll('.window-resizer').forEach(resizer => {
       const win = resizer.closest('.retro-window');
       let isResizing = false;
       let startX, startY, startWidth, startHeight;
 
-      function startResize(clientX, clientY) {
+      resizer.addEventListener('mousedown', (e) => {
         isResizing = true;
-        startX = clientX;
-        startY = clientY;
+        startX = e.clientX;
+        startY = e.clientY;
         startWidth = win.offsetWidth;
         startHeight = win.offsetHeight;
-      }
-
-      function onResizeMove(clientX, clientY) {
-        if (!isResizing) return;
-        const newWidth = Math.max(280, startWidth + (clientX - startX));
-        const newHeight = Math.max(200, startHeight + (clientY - startY));
-        win.style.width = `${newWidth}px`;
-        win.style.height = `${newHeight}px`;
-      }
-
-      function endResize() {
-        isResizing = false;
-      }
-
-      // Rato (PC)
-      resizer.addEventListener('mousedown', (e) => {
-        startResize(e.clientX, e.clientY);
         e.stopPropagation();
 
-        function onMouseMove(e) { onResizeMove(e.clientX, e.clientY); }
+        function onMouseMove(e) {
+          if (!isResizing) return;
+          const newWidth = Math.max(280, startWidth + (e.clientX - startX));
+          const newHeight = Math.max(200, startHeight + (e.clientY - startY));
+          win.style.width = `${newWidth}px`;
+          win.style.height = `${newHeight}px`;
+        }
+
         function onMouseUp() {
-          endResize();
+          isResizing = false;
           window.removeEventListener('mousemove', onMouseMove);
           window.removeEventListener('mouseup', onMouseUp);
         }
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
+      });
+    });
+
+    // Arrastar Post-it
+    const postit = document.getElementById('my-postit');
+    if (postit) {
+      let isDraggingPostIt = false;
+      let startX, startY, initialPostItLeft, initialPostItTop;
+
+      postit.addEventListener('mousedown', (e) => {
+        isDraggingPostIt = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = postit.getBoundingClientRect();
+        initialPostItLeft = rect.left;
+        initialPostItTop = rect.top;
+
+        function onMouseMove(e) {
+          if (!isDraggingPostIt) return;
+          postit.style.left = `${initialPostItLeft + (e.clientX - startX)}px`;
+          postit.style.top = `${initialPostItTop + (e.clientY - startY)}px`;
+        }
+
+        function onMouseUp() {
+          isDraggingPostIt = false;
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onMouseUp);
+        }
+
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('mouseup', onMouseUp);
       });
 
-      // Toque (Telemóvel / Tablet no cantinho)
-      resizer.addEventListener('touchstart', (e) => {
+      postit.addEventListener('touchstart', (e) => {
         const touch = e.touches[0];
-        startResize(touch.clientX, touch.clientY);
-        e.stopPropagation();
-        if (e.cancelable) e.preventDefault();
+        isDraggingPostIt = true;
+        startX = touch.clientX;
+        startY = touch.clientY;
+        const rect = postit.getBoundingClientRect();
+        initialPostItLeft = rect.left;
+        initialPostItTop = rect.top;
 
         function onTouchMove(e) {
+          if (!isDraggingPostIt) return;
           const t = e.touches[0];
-          onResizeMove(t.clientX, t.clientY);
+          postit.style.left = `${initialPostItLeft + (t.clientX - startX)}px`;
+          postit.style.top = `${initialPostItTop + (t.clientY - startY)}px`;
         }
+
         function onTouchEnd() {
-          endResize();
+          isDraggingPostIt = false;
           window.removeEventListener('touchmove', onTouchMove);
           window.removeEventListener('touchend', onTouchEnd);
         }
+
         window.addEventListener('touchmove', onTouchMove, { passive: false });
         window.addEventListener('touchend', onTouchEnd);
       }, { passive: false });
-    });
+    }
+    let activeGallery = [];
+  let activeImgIndex = 0;
+
+  function openLightbox(box) {
+    const parent = box.closest('#main-subcase-spaa, #main-subcase-manaque');
+    activeGallery = Array.from(parent.querySelectorAll('.inter-img-box img')).map(img => img.src);
+    activeImgIndex = activeGallery.indexOf(box.querySelector('img').src);
+    if (activeImgIndex === -1) activeImgIndex = 0;
     
+    document.getElementById('lightbox-img').src = activeGallery[activeImgIndex];
+    document.getElementById('image-lightbox').style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('image-lightbox').style.display = 'none';
+  }
+
+  function nextLightboxImage() {
+    if (!activeGallery.length) return;
+    activeImgIndex = (activeImgIndex + 1) % activeGallery.length;
+    document.getElementById('lightbox-img').src = activeGallery[activeImgIndex];
+  }
+
+  function prevLightboxImage() {
+    if (!activeGallery.length) return;
+    activeImgIndex = (activeImgIndex - 1 + activeGallery.length) % activeGallery.length;
+    document.getElementById('lightbox-img').src = activeGallery[activeImgIndex];
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (document.getElementById('image-lightbox').style.display === 'flex') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextLightboxImage();
+      if (e.key === 'ArrowLeft') prevLightboxImage();
+    }
+  });
   </script>
+  <!-- Modal Lightbox -->
+  <div id="image-lightbox" onclick="if(event.target.id === 'image-lightbox') closeLightbox();">
+    <div class="lightbox-box">
+      <button class="lightbox-close" onclick="closeLightbox()">×</button>
+      <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage()">◀</button>
+      <img id="lightbox-img" src="" alt="Tela Cheia">
+      <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage()">▶</button>
+    </div>
+  </div>
 </body>
 </html>
